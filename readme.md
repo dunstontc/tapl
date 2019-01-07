@@ -4,8 +4,6 @@
 
 - Chapter 1: An Awk Tutorial
   - 1.1 Getting Started
-    - Running an `awk` Program
-    - Errors
   - 1.2 Simple Output
   - 1.3 Fancier Output
   - 1.4 Selection
@@ -22,10 +20,6 @@
   - 2.5 Input
   - 2.6 Interaction with Other Programs
 - Chapter 3: Data Processing
-  - 3.1 Data Transformation and Reduction
-  - 3.2 Data Validation
-  - 3.3 Bundle & Unbundle
-  - 3.4 Multiline Records
 - Chapter 4: Reports and Databases
 - Chapter 5: Processing Words
 - Chapter 6: Litile Languages
@@ -33,46 +27,38 @@
 - Chapter 8: Epilog
 
 
-
-
-
-## Chapter 1: An Awk Tutorial
-
-```
-Beth  4.00 0
-Dan   3.75 0
-Kathy 4.00 10
-Mark  5.00 20
-Mary  5.50 22
-Susie 4.25 18
-```
-
-### Running an `awk` Program
-
-```shell
-awk 'program' input files
-
-awk '$3 == 0 { print $1 }' file1 file2
-
-awk -f program.awk optional list of input files
-```
-
 ## Chapter 2: The Awk Language
 
-### Comparison Operators
+### Comparison Operators (Table 2-1)
 
 | Operator |         Meaning          |
-| -------- | ------------------------ |
-| `<`      | less than                |
-| `<=`     | less than or equal       |
-| `==`     | equal to                 |
-| `!=`     | not equal to             |
-| `>=`     | greater than or equal to |
-| `>`      | greater than             |
-| `~`      | matched by               |
-| `!~`     | not matched by           |
+| :------: | ------------------------ |
+|   `<`    | less than                |
+|   `<=`   | less than or equal       |
+|   `==`   | equal to                 |
+|   `!=`   | not equal to             |
+|   `>=`   | greater than or equal to |
+|   `>`    | greater than             |
+|   `~`    | matched by               |
+|   `!~`   | not matched by           |
 
-### Built-in Variables
+### Escape Sequences (Table 2-2)
+
+| Sequence |                                  Meaning                                   |
+| :------: | -------------------------------------------------------------------------- |
+|   `\b`   | backspace                                                                  |
+|   `\f`   | formfeed                                                                   |
+|   `\n`   | newline (line feed)                                                        |
+|   `\r`   | carriage return                                                            |
+|   `\t`   | tab                                                                        |
+|  `\ddd`  | octal value `ddd`, where `ddd` is 1 to 3 digits between `0` and `7`        |
+|   `\c`   | any other character `c` literally (e.g., `\\` for backslash, `\"` for `"`) |
+
+### Regular Expressions (Table 2-3)
+
+### Patterns (Table 2-4)
+
+### Built-in Variables (Table 2-5)
 
 |  Variable  |                  Meaning                   | Default  |
 | ---------- | ------------------------------------------ | :------: |
@@ -91,6 +77,46 @@ awk -f program.awk optional list of input files
 | `RSTART`   | start of string matched by match function  |   `-`    |
 | `SUBSEP`   | subscript separator                        | `"\034"` |
 
+### Built-in Arithmetic Functions (Table 2-6)
+
+|   Function   |                     Value Returned                      |
+| ------------ | ------------------------------------------------------- |
+| `atan2(y,x)` | arctangent of `y/x` in the range `-π` to `π`            |
+| `cos(x)`     | cosine of `x`, with `x` in radians                      |
+| `exp(x)`     | exponential function of `x`, `e**x`                     |
+| `int(x)`     | integer part of `x`; truncated towards `0` when `x > 0` |
+| `log(x)`     | natural (base `e`) logarithm of `x`                     |
+| `rand()`     | random number `r`, where `0 <= r < 1`                   |
+| `sin(x)`     | sine of `x`, with `x` in radians                        |
+| `sqrt(x)`    | square root of `x`                                      |
+| `srand(x)`   | `x` is new seed for `rand()`                            |
+
+### Built-in String Functions (Table 2-7)
+
+|         Function         |                                                     Description                                                     |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| `gsub(r,s)`              | substitute `s` for `r` globally in `$0`, <br/> return number of substitutions made                                  |
+| `gsub(r,s,t)`            | substitutes for `r` globally in string `t`, <br/> return number of substitutions made                               |
+| `index(s,t)`             | return first position of string `t` in `s`, or `0` if `t` is not present                                            |
+| `length(s)`              | return number of characters in `s`                                                                                  |
+| `match(s,r)`             | test whether `s` contains a substring matched by `r`,  <br/> return index or `0`; sets `RSTART` and `RLENGTH`       |
+| `split(s,a)`             | split `s` into array `a` on `FS`, return number of fields                                                           |
+| `split(s,a,fs)`          | splits into array `a` on field separator `fs`, <br/> return number of fields                                        |
+| `sprintf(fmt,expr-list)` | return `expr-list` formatted according to format string `fmt`                                                       |
+| `sub(r,s)`               | substitute `s` for the leftmost longest substring of `$0` matched by `r`, <br/> return number of substitutions made |
+| `sub(r,s,t)`             | substitute `s` for the leftmost longest substring of `t` matched by `r`, <br/> return number of substitutions made  |
+| `substr(s,p)`            | return suffix of `s` starting at position `p`                                                                       |
+| `substr(s,p,n)`          | return substring of `s` of length `n` starting at position `p`                                                      |
+
+### `printf` Format-control Characters (Table 2-9)
+
+### Examples of `printf` Specifications (Table 2-10)
+
+### `getline` Function (Table 2-11)
+
+
+
+---
 
 ## Terms
 
