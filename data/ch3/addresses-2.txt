@@ -1,0 +1,19 @@
+accountant
+Adam Smith
+1234 Wall St., Apt. SC
+New York, NY 10021
+
+doctor - ophthalmologist
+Dr. W ill Seymour
+798 Maple Blvd.
+Berkeley Heights, NJ 07922
+
+lawyer
+David w. Copperfield
+221 Dickens Lane
+Monterey, CA 93940
+
+doctor - pediatrician
+Dr. Susan Mark
+600 Mountain Avenue
+Murray Hill, NJ 07974
