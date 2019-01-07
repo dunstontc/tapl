@@ -77,13 +77,13 @@
 ### Patterns (Table 2-4)
 
 |      Pattern      |          Example           |                               Matches                                |
-| ----------------- | -------------------------- | -------------------------------------------------------------------- |
-| *BEGIN*           | `BEGIN`                    | before any input has been read                                       |
-| *END*             | `END`                      | after all input has been read                                        |
-| *expression*      | `$3 < 100`                 | lines in which third field is less than 100                          |
-| *string-matching* | `/Asia/`                   | lines that contain Asia                                              |
-| *compound*        | `$3 < 100 && $4 == "Asia"` | lines in which third field is less than 100 and fourth field is Asia |
-| *range*           | `NR==10, NR==20`           | tenth to twentieth lines of input inclusive                          |
+| :---------------: | :------------------------: | -------------------------------------------------------------------- |
+|      *BEGIN*      |          `BEGIN`           | before any input has been read                                       |
+|       *END*       |           `END`            | after all input has been read                                        |
+|   *expression*    |         `$3 < 100`         | lines in which third field is less than 100                          |
+| *string-matching* |          `/Asia/`          | lines that contain Asia                                              |
+|    *compound*     | `$3 < 100 && $4 == "Asia"` | lines in which third field is less than 100 and fourth field is Asia |
+|      *range*      |      `NR==10, NR==20`      | tenth to twentieth lines of input inclusive                          |
 
 ### Built-in Variables (Table 2-5)
 
@@ -135,11 +135,74 @@
 | `substr(s,p)`            | return suffix of `s` starting at position `p`                                                                       |
 | `substr(s,p,n)`          | return substring of `s` of length `n` starting at position `p`                                                      |
 
+### Expression Operators (Table 2-8)
+
+|       Operation       |       Operators       | Example | Meaning of Example |
+| --------------------- | --------------------- | ------- | ------------------ |
+| assignment            | `= += -= *= /= %= ^=` |         |                    |
+| conditional           | `?:`                  |         |                    |
+| logical OR            | `::`                  |         |                    |
+| logical AND           | `&&`                  |         |                    |
+| array membership      | `in`                  |         |                    |
+| matching              | `~ !~`                |         |                    |
+| relational            | `< <= == != >= >`     |         |                    |
+| concatenation         | ` `                   |         |                    |
+| add, subtract         | `+ -`                 |         |                    |
+| multiply, divide, mod | `* / %`               |         |                    |
+| unary plus and minus  | `+ -`                 |         |                    |
+| logical NOT           | `!`                   |         |                    |
+| exponentiation        | `^`                   |         |                    |
+| increment, decrement  | `++ --`               |         |                    |
+| field                 | `$`                   |         |                    |
+| grouping              | `( )`                 |         |                    |
+
 ### `printf` Format-control Characters (Table 2-9)
+
+| Character |                                Print Expression As                                |
+| --------- | --------------------------------------------------------------------------------- |
+| `c`       | ASCII character                                                                   |
+| `d`       | decimal integer                                                                   |
+| `e`       | `[-]d.ddddddE[+-]dd`                                                              |
+| `f`       | `[-]ddd.dddddd`                                                                   |
+| `g`       | `e` or `f` conversion, whichever is shorter, with nonsignificant zeros suppressed |
+| `o`       | unsigned octal number                                                             |
+| `s`       | string                                                                            |
+| `x`       | unsigned hexadecimal number                                                       |
+| `%`       | print a `%`; no argument is consumed                                              |
 
 ### Examples of `printf` Specifications (Table 2-10)
 
+|    `fmt`      |  `$1`     | `printf(fmt, $1)` |
+| ------------- | --------- | ----------------- |
+| `%c`          | `97`      | `a`               |
+| `%d`          | `97.5`    | `97`              |
+| `%5d`         | `97.5`    | `   97`           |
+| `%e`          | `97.5`    | `9.750000e+01`    |
+| `%f`          | `97.5`    | `97.500000`       |
+| `%7.2f`       | `97.5`    | `  97.50`         |
+| `%q`          | `97.5`    | `97.5`            |
+| `%.6g`        | `97.5`    | `97.5`            |
+| `%o`          | `97`      | `141`             |
+| `%06o`        | `97`      | `000141`          |
+| `%x`          | `97`      | `61`              |
+| `\|%s\|`      | `January` | `\|January\|`     |
+| `\|%10s\|`    | `January` | `\|   January\|`  |
+| `\|%-10s\|`   | `January` | `\|January   \|`  |
+| `\|%.3s\|`    | `January` | `\|Jan\|`         |
+| `\|%10.3s\|`  | `January` | `\|       Jan\|`  |
+| `\|%-10.3s\|` | `January` | `\|Jan       \|`  |
+| `%%`          | `January` | `%`               |
+
 ### `getline` Function (Table 2-11)
+
+|     Expression       |          Sets           |
+| -------------------- | ----------------------- |
+| `getline`            | `$0`, `NF`, `NR`, `FNR` |
+| `getline var`        | *var*, `NR`, `FNR`      |
+| `getline <file`      | `$0`, `NF`              |
+| `getline var <file`  | *var*                   |
+| `cmd \| getline`     | `$0`, `NF`              |
+| `cmd \| getline var` | *var*                   |
 
 
 
