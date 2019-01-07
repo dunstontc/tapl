@@ -67,7 +67,7 @@
 | `[^c1c2...]` | any character not in `c1c2...`                                                                                                  |
 |  `[c1-c2]`   | any character in the range beginning with `c1` and ending with `c2`                                                             |
 |  `[^c1-c2]`  | any character not in the range `c1` to `c2`                                                                                     |
-|   `r1\|r2`    | any string matched by `r1` or `r2`                                                                                              |
+|   `r1\|r2`   | any string matched by `r1` or `r2`                                                                                              |
 |  `(r1)(r2)`  | any string `xy` where `r1` matches `x` and `r2` matches `y`; <br/> parentheses not needed around arguments with no alternations |
 |    `(r)*`    | zero or more consecutive strings matched by `r`                                                                                 |
 |    `(r)+`    | one or more consecutive strings matched by `r`                                                                                  |
@@ -137,24 +137,24 @@
 
 ### Expression Operators (Table 2-8)
 
-|       Operation       |       Operators       | Example | Meaning of Example |
-| --------------------- | --------------------- | ------- | ------------------ |
-| assignment            | `= += -= *= /= %= ^=` |         |                    |
-| conditional           | `?:`                  |         |                    |
-| logical OR            | `::`                  |         |                    |
-| logical AND           | `&&`                  |         |                    |
-| array membership      | `in`                  |         |                    |
-| matching              | `~ !~`                |         |                    |
-| relational            | `< <= == != >= >`     |         |                    |
-| concatenation         | ` `                   |         |                    |
-| add, subtract         | `+ -`                 |         |                    |
-| multiply, divide, mod | `* / %`               |         |                    |
-| unary plus and minus  | `+ -`                 |         |                    |
-| logical NOT           | `!`                   |         |                    |
-| exponentiation        | `^`                   |         |                    |
-| increment, decrement  | `++ --`               |         |                    |
-| field                 | `$`                   |         |                    |
-| grouping              | `( )`                 |         |                    |
+|       Operation       |       Operators       |   Example    |                  Meaning of Example                  |
+| --------------------- | --------------------- | ------------ | ---------------------------------------------------- |
+| assignment            | `= += -= *= /= %= ^=` | `x *= 2`     | `x = x * 2`                                          |
+| conditional           | `?:`                  | `x?y:z`      | if `x` is true then `y` else `z`                     |
+| logical OR            | `\|\|`                | `x \|\| y`   | `1` if `x` or `y` are true, `0` otherwise            |
+| logical AND           | `&&`                  | `x && y`     | `1` if `x` and `y` are true, `0` otherwise           |
+| array membership      | `in`                  | `i in a`     | `1` if `a[i]` exists, `0` otherwise                  |
+| matching              | `~ !~`                | `$1 ~ /x/`   | `1` if the first field contains `x`, `0` otherwise   |
+| relational            | `< <= == != >= >`     | `x == y`     | `1` id `x` is equal to `y`, `0` otherwise            |
+| concatenation         | ` `                   | `"a" "bc"`   | `"abc"`; there is no explicit concatenation operator |
+| add, subtract         | `+ -`                 | `x + y`      | sum of `x` and `y`                                   |
+| multiply, divide, mod | `* / %`               | `x % y`      | remainder of `x` divided by `y`                      |
+| unary plus and minus  | `+ -`                 | `-x`         | negated value of `x`                                 |
+| logical NOT           | `!`                   | `!$1`        | `1` if `$1` is zero or null, `0` otherwise           |
+| exponentiation        | `^`                   | `x ^ y`      | `x**y` (`x` raised to `y`)                           |
+| increment, decrement  | `++ --`               | `++x`, `x++` | add 1 to `x`                                         |
+| field                 | `$`                   | `$i+1`       | value of the `i`th field, plus `1`                   |
+| grouping              | `( )`                 | `($i)++`     | add `1` to value of the `i`th field                  |
 
 ### `printf` Format-control Characters (Table 2-9)
 
@@ -198,11 +198,11 @@
 |     Expression       |          Sets           |
 | -------------------- | ----------------------- |
 | `getline`            | `$0`, `NF`, `NR`, `FNR` |
-| `getline var`        | *var*, `NR`, `FNR`      |
+| `getline var`        | `var`, `NR`, `FNR`      |
 | `getline <file`      | `$0`, `NF`              |
-| `getline var <file`  | *var*                   |
+| `getline var <file`  | `var`                   |
 | `cmd \| getline`     | `$0`, `NF`              |
-| `cmd \| getline var` | *var*                   |
+| `cmd \| getline var` | `var`                   |
 
 
 
