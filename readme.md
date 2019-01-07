@@ -67,7 +67,7 @@
 | `[^c1c2...]` | any character not in `c1c2...`                                                                                                  |
 |  `[c1-c2]`   | any character in the range beginning with `c1` and ending with `c2`                                                             |
 |  `[^c1-c2]`  | any character not in the range `c1` to `c2`                                                                                     |
-|   `r1|r2`    | any string matched by `r1` or `r2`                                                                                              |
+|   `r1\|r2`    | any string matched by `r1` or `r2`                                                                                              |
 |  `(r1)(r2)`  | any string `xy` where `r1` matches `x` and `r2` matches `y`; <br/> parentheses not needed around arguments with no alternations |
 |    `(r)*`    | zero or more consecutive strings matched by `r`                                                                                 |
 |    `(r)+`    | one or more consecutive strings matched by `r`                                                                                  |
