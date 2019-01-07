@@ -56,7 +56,34 @@
 
 ### Regular Expressions (Table 2-3)
 
+|  Expression  |                                                             Matches                                                             |
+| :----------: | ------------------------------------------------------------------------------------------------------------------------------- |
+|     `c`      | the nonmetacharacter `c`                                                                                                        |
+|     `\c`     | escape sequence or literal character `c`                                                                                        |
+|     `^`      | beginning of string                                                                                                             |
+|     `$`      | end of string                                                                                                                   |
+|     `.`      | any character                                                                                                                   |
+| `[c1c2...]`  | any character in `c1c2...`                                                                                                      |
+| `[^c1c2...]` | any character not in `c1c2...`                                                                                                  |
+|  `[c1-c2]`   | any character in the range beginning with `c1` and ending with `c2`                                                             |
+|  `[^c1-c2]`  | any character not in the range `c1` to `c2`                                                                                     |
+|   `r1|r2`    | any string matched by `r1` or `r2`                                                                                              |
+|  `(r1)(r2)`  | any string `xy` where `r1` matches `x` and `r2` matches `y`; <br/> parentheses not needed around arguments with no alternations |
+|    `(r)*`    | zero or more consecutive strings matched by `r`                                                                                 |
+|    `(r)+`    | one or more consecutive strings matched by `r`                                                                                  |
+|    `(r)?`    | zero or one string matched by `r` <br/> parentheses not needed around basic regular expressions                                 |
+|    `(r)`     | any string matched by `r`                                                                                                       |
+
 ### Patterns (Table 2-4)
+
+|      Pattern      |          Example           |                               Matches                                |
+| ----------------- | -------------------------- | -------------------------------------------------------------------- |
+| *BEGIN*           | `BEGIN`                    | before any input has been read                                       |
+| *END*             | `END`                      | after all input has been read                                        |
+| *expression*      | `$3 < 100`                 | lines in which third field is less than 100                          |
+| *string-matching* | `/Asia/`                   | lines that contain Asia                                              |
+| *compound*        | `$3 < 100 && $4 == "Asia"` | lines in which third field is less than 100 and fourth field is Asia |
+| *range*           | `NR==10, NR==20`           | tenth to twentieth lines of input inclusive                          |
 
 ### Built-in Variables (Table 2-5)
 
