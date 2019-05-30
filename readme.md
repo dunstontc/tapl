@@ -205,6 +205,32 @@
 | `cmd \| getline var` | `var`                   |
 
 
+### Control-Flow Statements
+
+- `{ statements }`
+  - statement grouping
+- `if (expression) statement`
+  - if expression is true, execute statement
+- `if (expression) statement_1 else statement_2`
+  - if expression is true, execute statement_1 otherwise execute statement 2
+- `while (expression) statement`
+  - if expression is true, execute statement, then repeat
+- `for (expression_1; expression_2 ; expression_3) statement`
+  - equivalent to expression_1; while (expression_2) { statement; expression_3 }
+- `for (variable in array) statement`
+  - execute statement with variable set to each subscript in array in turn
+- `do statement while (expression)`
+  - execute statement; if expression is true, repeat
+- `break`
+  - immediately leave innermost enclosing while, for or do
+- `continue`
+  - start next iteration of innermost enclosing while, for or do
+- `next`
+  - start next iterc1tion of main input loop
+- `exit`
+- `exit expression`
+  - go immediately to the END action; if within the END action, exit program entirely. Return expression as program status.
+
 
 ---
 
